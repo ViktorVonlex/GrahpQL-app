@@ -29,8 +29,9 @@ type Query {
   publishers: [Publisher!]!
   publisher(id: ID!): Publisher
   books: [Book!]!
-  woAuthor: [Book]
+  woAuthor: [Book]!
   book(id: ID!): Book
+  booksByPublisherId(id: ID!): [Book]
 }
 
 type Mutation {

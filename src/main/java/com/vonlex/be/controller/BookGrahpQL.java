@@ -31,4 +31,9 @@ public class BookGrahpQL {
     public List<Book> woAuthor() {
         return bookRepository.findBookByAuthorIsNull();
     }
+
+    @SchemaMapping(typeName = "Query", field = "booksByPublisherId")
+    public List<Book> bookByPublisherId(@Argument Long id) {
+        return bookRepository.findBookByPublisher_Id(id);
+    }
 }

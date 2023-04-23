@@ -2,6 +2,7 @@ package com.vonlex.be.model;
 
 import jakarta.persistence.*;
 
+
 @Entity
 @Table(name = "book")
 public class Book {
@@ -23,6 +24,9 @@ public class Book {
     @JoinColumn(name = "author_id", nullable = false)
     private Author author;
 
+    @ManyToOne
+    @JoinColumn(name = "publisher_id")
+    private Publisher publisher;
 
     // Constructors, getters, and setters
     public Book() {
