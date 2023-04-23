@@ -29,6 +29,7 @@ type Query {
   publishers: [Publisher!]!
   publisher(id: ID!): Publisher
   books: [Book!]!
+  woAuthor: [Book]
   book(id: ID!): Book
 }
 

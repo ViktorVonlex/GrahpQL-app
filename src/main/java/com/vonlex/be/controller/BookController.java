@@ -28,4 +28,8 @@ public class BookController {
         return bookRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Book not found with id " + id));
     }
 
+    @GetMapping("/woAuthor")
+    public List<Book> woAuthor() {
+        return bookRepository.findBookByAuthorIsNull();
+    }
 }
