@@ -90,8 +90,6 @@ public class BookGrahpQL {
             }
 
             Book bookToUpdate = optionalBook.get();
-            System.out.println("sup");
-            System.out.println(input.toString());
 
             if (input.getTitle() != null) {
                 bookToUpdate.setTitle(input.getTitle());
@@ -105,9 +103,9 @@ public class BookGrahpQL {
                 bookToUpdate.setYear(input.getYear());
             }
 
-            if (input.getAuthorId() != null) {
+            if (input.getAuthor() != null) {
 
-                Optional<Author> optionalAuthor = authorRepository.findById(input.getAuthorId());
+                Optional<Author> optionalAuthor = authorRepository.findById(input.getAuthor());
                 if (optionalAuthor.isEmpty()) {
                     throw new AuthorNotFoundException("Cannot update book, because author was not found");
                 }
@@ -115,8 +113,8 @@ public class BookGrahpQL {
                 bookToUpdate.setAuthor(optionalAuthor.get());
             }
 
-            if (input.getPublisherId() != null) {
-                Optional<Publisher> optionalPublisher = publisherRepository.findById(input.getPublisherId());
+            if (input.getPublisher() != null) {
+                Optional<Publisher> optionalPublisher = publisherRepository.findById(input.getPublisher());
                 if (optionalPublisher.isEmpty()) {
                     throw new NoSuchElementException("Cannot update book, because publisher was not found");
                 }

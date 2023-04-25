@@ -4,8 +4,8 @@ public class UpdateBookInput {
     private String title;
     private String isbn;
     private int year;
-    private Long authorId;
-    private Long publisherId;
+    private Long author;
+    private Long publisher;
 
     public String getTitle() {
         return title;
@@ -31,19 +31,30 @@ public class UpdateBookInput {
         this.year = year;
     }
 
-    public Long getAuthorId() {
-        return authorId;
+    public Long getAuthor() {
+        return author;
     }
 
-    public void setAuthorId(Long authorId) {
-        this.authorId = authorId;
+    public void setAuthor(Long author) {
+        this.author = author;
     }
 
-    public Long getPublisherId() {
-        return publisherId;
+    public Long getPublisher() {
+        return publisher;
     }
 
-    public void setPublisherId(Long publisherId) {
-        this.publisherId = publisherId;
+    public void setPublisher(Long publisher) {
+        this.publisher = publisher;
+    }
+
+    @Override
+    public String toString() {
+        return "UpdateBookInput{" +
+                "title='" + title + '\'' +
+                ", isbn='" + isbn + '\'' +
+                ", year=" + year +
+                ", author=" + author +
+                ", publisher=" + publisher +
+                '}';
     }
 }
