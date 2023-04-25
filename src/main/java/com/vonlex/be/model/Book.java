@@ -33,6 +33,14 @@ public class Book {
 
     }
 
+    public Book(Long id, String title, String isbn, Integer year, Author author) {
+        this.id = id;
+        this.title = title;
+        this.isbn = isbn;
+        this.year = year;
+        this.author = author;
+    }
+
     public Book(String title, String isbn, Integer year, Author author) {
         this.title = title;
         this.isbn = isbn;
@@ -58,5 +66,29 @@ public class Book {
 
     public Author getAuthor() {
         return author;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
     }
 }

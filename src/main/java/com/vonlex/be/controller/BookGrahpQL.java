@@ -3,20 +3,19 @@ package com.vonlex.be.controller;
 import com.vonlex.be.errors.AuthorNotFoundException;
 import com.vonlex.be.model.Author;
 import com.vonlex.be.model.Book;
+import com.vonlex.be.model.Publisher;
 import com.vonlex.be.repository.AuthorRepository;
 import com.vonlex.be.repository.BookRepository;
-import graphql.GraphQLError;
-import graphql.GraphqlErrorBuilder;
+
+import com.vonlex.be.repository.PublisherRepository;
+import com.vonlex.be.utilClasses.UpdateBookInput;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
+
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -31,6 +30,9 @@ public class BookGrahpQL {
 
     @Autowired
     private AuthorRepository authorRepository;
+
+    @Autowired
+    private PublisherRepository publisherRepository;
 
     @SchemaMapping(typeName = "Query", field = "books")
     List<Book> books(){
@@ -59,7 +61,7 @@ public class BookGrahpQL {
             @Argument(name = "year") int year,
             @Argument(name = "authorId") Long authorId) throws AuthorNotFoundException {
         Optional<Author> author = authorRepository.findById(authorId);
-        if (!author.isPresent()) {
+        if (author.isEmpty()) {
             throw new AuthorNotFoundException("Author not found with provided id");
         } else {
             Book book = new Book(title, isbn, year, author.get());
@@ -77,5 +79,51 @@ public class BookGrahpQL {
             throw new NoSuchElementException("Book not found with id " + id);
         }
     }
+
+    @MutationMapping
+    public Book updateBook(
+            @Argument(name = "id") Long id,
+            @Argument(name = "input") UpdateBookInput input) {
+            Optional<Book> optionalBook = bookRepository.findById(id);
+            if (optionalBook.isEmpty()) {
+                throw new NoSuchElementException("Book not found with id " + id);
+            }
+
+            Book bookToUpdate = optionalBook.get();
+            System.out.println("sup");
+            System.out.println(input.toString());
+
+            if (input.getTitle() != null) {
+                bookToUpdate.setTitle(input.getTitle());
+            }
+
+            if (input.getIsbn() != null) {
+                bookToUpdate.setIsbn(input.getIsbn());
+            }
+
+            if (input.getYear() != 0) {
+                bookToUpdate.setYear(input.getYear());
+            }
+
+            if (input.getAuthorId() != null) {
+
+                Optional<Author> optionalAuthor = authorRepository.findById(input.getAuthorId());
+                if (optionalAuthor.isEmpty()) {
+                    throw new AuthorNotFoundException("Cannot update book, because author was not found");
+                }
+
+                bookToUpdate.setAuthor(optionalAuthor.get());
+            }
+
+            if (input.getPublisherId() != null) {
+                Optional<Publisher> optionalPublisher = publisherRepository.findById(input.getPublisherId());
+                if (optionalPublisher.isEmpty()) {
+                    throw new NoSuchElementException("Cannot update book, because publisher was not found");
+                }
+
+                bookToUpdate.setPublisher(optionalPublisher.get());
+            }
+
+            return bookRepository.save(bookToUpdate);}
 
 }

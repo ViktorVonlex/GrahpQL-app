@@ -34,14 +34,23 @@ type Query {
   booksByPublisherId(id: ID!): [Book]
 }
 
+input updateBookInput {
+  title: String
+  isbn: String
+  year: Int
+  author: ID
+  publisher: ID
+}
+
 type Mutation {
+  createBook(title: String!, isbn: String, year: Int, authorId: ID!, publisherId: ID): Book!
+  deleteBook(id: ID!): Boolean!
+  updateBook(id: ID!, input: updateBookInput): Book!
   createAuthor(firstName: String!, lastName: String!, birthDate: String, country: String): Author!
   updateAuthor(id: ID!, firstName: String, lastName: String, birthDate: String, country: String): Author!
   deleteAuthor(id: ID!): Boolean!
   createPublisher(name: String!, location: String): Publisher!
   updatePublisher(id: ID!, name: String, location: String): Publisher!
   deletePublisher(id: ID!): Boolean!
-  createBook(title: String!, isbn: String, year: Int, authorId: ID!, publisherId: ID): Book!
-  updateBook(id: ID!, title: String, isbn: String, year: Int, authorId: ID, publisherId: ID): Book!
-  deleteBook(id: ID!): Boolean!
+
 }
