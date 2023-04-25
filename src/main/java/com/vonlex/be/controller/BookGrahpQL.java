@@ -67,4 +67,15 @@ public class BookGrahpQL {
         }
     }
 
+    @MutationMapping
+    public boolean deleteBook(@Argument(name = "id") Long id) {
+        Optional<Book> book = bookRepository.findById(id);
+        if(book.isPresent()) {
+            bookRepository.deleteById(id);
+            return true;
+        } else {
+            throw new NoSuchElementException("Book not found with id " + id);
+        }
+    }
+
 }
