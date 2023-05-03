@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: ps-db
+    restart: always
+    environment:
+      POSTGRES_USER: vonlex
+      POSTGRES_PASSWORD: vonlexps
+      POSTGRES_DB: main
+    ports:
+      - "5432:5432"
+    networks:
+      - my-app
+
+networks:
+  my-app:
