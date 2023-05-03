@@ -122,6 +122,7 @@ public class BookGrahpQL {
                 bookToUpdate.setPublisher(optionalPublisher.get());
             }
 
-            return bookRepository.save(bookToUpdate);}
+            return bookRepository.save(bookToUpdate);
+    }
 
 }
