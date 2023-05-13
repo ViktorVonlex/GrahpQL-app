@@ -1,7 +1,7 @@
 # Mám to borci
 
 ## Návod
-Asi jsem pochopil Hibernate (ORM, který používáme). Snad tenhle návod s obrázkama pomůže i vám.
+Asi jsem pochopil Hibernate (ORM, který používáme). Snad vám tenhle návod pomůže to líp pochopit.
 
 ## Datovej model
 
