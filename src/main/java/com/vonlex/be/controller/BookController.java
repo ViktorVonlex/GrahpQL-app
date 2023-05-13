@@ -23,6 +23,11 @@ public class BookController {
         return bookRepository.findAll();
     }
 
+    @GetMapping("/booksByAuthor/{authorId}")
+    public List<Book> byAuthorId(@PathVariable Long authorId) {
+        return bookRepository.findBooksByAuthorId(authorId);
+    }
+
     @GetMapping("/{id}")
     public Book byId(@PathVariable("id") Long id) {
         return bookRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Book not found with id " + id));

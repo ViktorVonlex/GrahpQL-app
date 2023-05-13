@@ -7,5 +7,6 @@ INSERT INTO publisher (name, location) VALUES ('HarperCollins', 'London, UK');
 INSERT INTO publisher (name, location) VALUES ('Hachette Livre', 'Paris, France');
 
 INSERT INTO book (title, isbn, year, author_id, publisher_id) VALUES ('The Handmaid''s Tale', '9780385490818', 1985, 1, 1);
+INSERT INTO book (title, isbn, year, author_id, publisher_id) VALUES ('Nejlepsi knizka', '1231244232423', 1985, 1, 2);
 INSERT INTO book (title, isbn, year, author_id, publisher_id) VALUES ('American Gods', '9780062572233', 2001, 2, 2);
 INSERT INTO book (title, isbn, year, author_id, publisher_id) VALUES ('Parable of the Sower', '9780446675505', 1993, 3, 3);

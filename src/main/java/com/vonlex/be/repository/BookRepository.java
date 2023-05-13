@@ -11,4 +11,5 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     List<Book> findBookByAuthorIsNull();
     List<Book> findBookByPublisherId(Long id);
+    List<Book> findBooksByAuthorId(Long id);
 }
