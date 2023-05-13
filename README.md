@@ -25,7 +25,8 @@ Nereferuje to ŽÁDNEJ SLOUPEC v databázi, je to čistě kvůli tomu, aby Hiber
 Tady máme author repository se 3 metodama, jejichž jména přesně popisujou, co ty metody dělají, proto vlastně vytváříme ty classy jako @Entity a píšeme další sračky jako @OneToMany a @ManyToOne.
 
 ## Author findAuthorByBooksId(Long bookId);
-Vysvětlím po částech.  První část: findAuthor - asi jasný xd  
+Vysvětlím po částech.  
+První část: findAuthor - asi jasný xd  
 Část druhá - ByBooks - "By" je asi taky jasný, ale Books je tady název fieldy z Book modelu, konkrétně:  
 
     @OneToMany(mappedBy = "author")
@@ -43,7 +44,7 @@ field publisher.
     private Publisher publisher;
 
 Takže máme tohle: findAuthorByBooksPublisher. A jelikož jsme na modelu Publisher, zbejvá napsat Id,
-takže finální podoba: findAuthorByBooksPublisherId
+takže finální podoba: findAuthorByBooksPublisherId  
 
 Pro porovnání ještě na v repository je metoda Author findAuthorByBooksPublisherName(String name);
 Funguje úplně stejně, akorát že vybíráme podle fieldu **name** v modelu Publisher: 
