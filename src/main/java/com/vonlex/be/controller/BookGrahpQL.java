@@ -51,7 +51,7 @@ public class BookGrahpQL {
 
     @SchemaMapping(typeName = "Query", field = "booksByPublisherId")
     public List<Book> bookByPublisherId(@Argument Long id) {
-        return bookRepository.findBookByPublisher_Id(id);
+        return bookRepository.findBookByPublisherId(id);
     }
 
     @MutationMapping
