@@ -17,7 +17,7 @@ Pak musíme vytvořit model pro autor tabulku.
 
 ![Author entity](boyz/Screenshot_3.png)
 
-Tady přichází malinkej pojeb Hibernatu. Musíme udělat anotaci @OneToMany kde mappedBy referuje field (private Author author) v entitě Book.
+Tady přichází malinkej pojeb Hibernatu. Musíme udělat anotaci @OneToMany kde mappedBy referuje field private Author author v entitě Book (předchozí obrázek).
 Nereferuje to ŽÁDNEJ SLOUPEC v databázi, je to čistě kvůli tomu, aby Hibernate chápal ten vztah. Díky tomuhle pak můžeme napsat krásný a jasný metody.
 
 ![Author repository](boyz/Screenshot_5.png)
