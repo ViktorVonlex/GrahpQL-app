@@ -25,13 +25,13 @@ Nereferuje to ŽÁDNEJ SLOUPEC v databázi, je to čistě kvůli tomu, aby Hiber
 Tady máme author repository se 3 metodama, jejichž jména přesně popisujou, co ty metody dělají, proto vlastně vytváříme ty classy jako @Entity a píšeme další sračky jako @OneToMany a @ManyToOne.
 
 ## Author findAuthorByBooksId(Long bookId);
-Vysvětlím po částech. První část: findAuthor - asi jasný xd
-Část druhá - ByBooks - "By" je asi taky jasný, ale Books je tady název fieldy z Book modelu, konkrétně:
+Vysvětlím po částech. První část: findAuthor - asi jasný xd  
+Část druhá - ByBooks - "By" je asi taky jasný, ale Books je tady název fieldy z Book modelu, konkrétně:  
 
     @OneToMany(mappedBy = "author")
-    private List<Book> **books**;
+    private List<Book> books;
 
-Část třetí - Id - teď jsme se jakoby už přesunuli na model Book a musíme vybrat, že nás zajímá id.
+Část třetí - Id - teď jsme se jakoby už přesunuli na model Book a musíme vybrat, že nás zajímá id.  
 
 ## Author findAuthorByBooksPublisherId(Long publisherId);
 Tady už je to zajímavější, protože propojíme všechny tři tabulky. První dvě části jsou stejný jako předtím.
@@ -40,7 +40,7 @@ field publisher.
 
     @ManyToOne
     @JoinColumn(name = "publisher_id")
-    private Publisher **publisher**;
+    private Publisher publisher;
 
 Takže máme tohle: findAuthorByBooksPublisher. A jelikož jsme na modelu Publisher, zbejvá napsat Id,
 takže finální podoba: findAuthorByBooksPublisherId
@@ -49,7 +49,7 @@ Pro porovnání ještě na v repository je metoda Author findAuthorByBooksPublis
 Funguje úplně stejně, akorát že vybíráme podle fieldu **name** v modelu Publisher: 
 
     @Column(name = "name", nullable = false)
-    private String **name**;
+    private String name;
     
 ## Závěr
 
