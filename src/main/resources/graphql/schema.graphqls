@@ -43,8 +43,16 @@ input updateBookInput {
   publisher: ID
 }
 
+input createBookInput {
+  title: String!
+  isbn: String
+  year: Int
+  author: ID!
+  publisher: ID
+}
+
 type Mutation {
-  createBook(title: String!, isbn: String, year: Int, authorId: ID!, publisherId: ID): Book!
+  createBook(input: createBookInput!): Book!
   deleteBook(id: ID!): Boolean!
   updateBook(id: ID!, input: updateBookInput): Book!
   createAuthor(firstName: String!, lastName: String!, birthDate: String, country: String): Author!

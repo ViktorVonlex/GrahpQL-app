@@ -8,6 +8,7 @@ import com.vonlex.be.repository.AuthorRepository;
 import com.vonlex.be.repository.BookRepository;
 
 import com.vonlex.be.repository.PublisherRepository;
+import com.vonlex.be.utilClasses.CreateBookInput;
 import com.vonlex.be.utilClasses.UpdateBookInput;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
@@ -55,16 +56,33 @@ public class BookGrahpQL {
     }
 
     @MutationMapping
-    public Book createBook(
-            @Argument(name = "title") String title,
-            @Argument(name = "isbn") String isbn,
-            @Argument(name = "year") int year,
-            @Argument(name = "authorId") Long authorId) throws AuthorNotFoundException {
-        Optional<Author> author = authorRepository.findById(authorId);
+    public Book createBook(@Argument(name = "input") CreateBookInput createBookInput)
+            throws AuthorNotFoundException {
+        Optional<Author> author = authorRepository.findById(createBookInput.getAuthor());
         if (author.isEmpty()) {
             throw new AuthorNotFoundException("Author not found with provided id");
         } else {
-            Book book = new Book(title, isbn, year, author.get());
+            Book book = new Book();
+            book.setAuthor(author.get());
+            if (createBookInput.getTitle() != null) {
+                book.setTitle(createBookInput.getTitle());
+            }
+
+            if (createBookInput.getIsbn() != null) {
+                book.setIsbn(createBookInput.getIsbn());
+            }
+
+            if (createBookInput.getYear() != 0) {
+                book.setYear(createBookInput.getYear());
+            }
+
+            if (createBookInput.getPublisher() != null) {
+                Optional<Publisher> optionalPublisher = publisherRepository.findById(createBookInput.getPublisher());
+                if (optionalPublisher.isEmpty()) {
+                    throw new NoSuchElementException("Cannot update book, because publisher was not found");
+                }
+                book.setPublisher(optionalPublisher.get());
+            }
             return bookRepository.save(book);
         }
     }
