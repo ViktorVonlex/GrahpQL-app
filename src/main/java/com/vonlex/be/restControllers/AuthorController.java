@@ -1,4 +1,4 @@
-package com.vonlex.be.controller;
+package com.vonlex.be.restControllers;
 
 import com.vonlex.be.model.Author;
 import com.vonlex.be.repository.AuthorRepository;

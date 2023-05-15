@@ -1,4 +1,4 @@
-package com.vonlex.be.controller;
+package com.vonlex.be.graphqlControllers;
 
 import com.vonlex.be.errors.AuthorNotFoundException;
 import com.vonlex.be.model.Author;

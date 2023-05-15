@@ -1,4 +1,4 @@
-package com.vonlex.be.controller;
+package com.vonlex.be.graphqlControllers;
 
 import com.vonlex.be.model.Publisher;
 import com.vonlex.be.repository.PublisherRepository;
@@ -24,6 +24,11 @@ public class PublisherGraphQL {
     @SchemaMapping(typeName = "Query", field = "publishers")
     public List<Publisher> publishers() {
         return publisherRepository.findAll();
+    }
+
+    @SchemaMapping(typeName = "Query", field = "publisherByBookId")
+    public Publisher byBookId(@Argument Long id) {
+        return publisherRepository.findPublisherByBooksId(id);
     }
 
 }

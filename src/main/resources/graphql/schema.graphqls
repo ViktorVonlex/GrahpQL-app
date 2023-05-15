@@ -28,6 +28,7 @@ type Query {
   author(id: ID!): Author
   publishers: [Publisher!]!
   publisher(id: ID!): Publisher
+  publisherByBookId(id: ID!): Publisher
   books: [Book!]!
   woAuthor: [Book]!
   book(id: ID!): Book
