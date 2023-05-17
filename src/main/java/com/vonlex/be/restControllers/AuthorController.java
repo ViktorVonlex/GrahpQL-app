@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/authors")
 public class AuthorController {
@@ -28,5 +30,10 @@ public class AuthorController {
     @GetMapping("/byPublisherName/{publisherName}")
     public Author getAuthorByBookPublisherId(@PathVariable String publisherName){
         return authorRepository.findAuthorByBooksPublisherName(publisherName);
+    }
+
+    @GetMapping("/getAuthorsByPublisherId/{publisherId}")
+    public List<Author> getAuthorsByPublisherId(@PathVariable Long publisherId) {
+        return authorRepository.findAuthorsByBooksPublisherId(publisherId);
     }
 }

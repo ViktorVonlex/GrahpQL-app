@@ -10,3 +10,9 @@ INSERT INTO book (title, isbn, year, author_id, publisher_id) VALUES ('The Handm
 INSERT INTO book (title, isbn, year, author_id, publisher_id) VALUES ('Nejlepsi knizka', '1231244232423', 1985, 1, 2);
 INSERT INTO book (title, isbn, year, author_id, publisher_id) VALUES ('American Gods', '9780062572233', 2001, 2, 2);
 INSERT INTO book (title, isbn, year, author_id, publisher_id) VALUES ('Parable of the Sower', '9780446675505', 1993, 3, 3);
+
+-- inserts for work test
+INSERT INTO book (title, isbn, year, author_id, publisher_id) VALUES ('Top knizka', '23123432423', 1999, 2, 3);
+INSERT INTO book (title, isbn, year, author_id, publisher_id) VALUES ('Codex', '23242365567423', 1995, 1, 3);
+INSERT INTO book (title, isbn, year, author_id, publisher_id) VALUES ('Posledni', '25345375656756', 1995, 1, 3);
+
