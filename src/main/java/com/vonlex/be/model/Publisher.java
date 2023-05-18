@@ -1,5 +1,8 @@
 package com.vonlex.be.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.vonlex.be.view.PublisherViews;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -7,6 +10,7 @@ import java.util.List;
 @Entity
 @Table(name = "publisher")
 public class Publisher {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,7 +26,8 @@ public class Publisher {
 
     @ManyToOne
     @JoinColumn(name = "city_id")
-    private City publisherOrigin;
+    @JsonIgnore
+    private City origin;
 
     // constructors, getters and setters
 
@@ -45,5 +50,9 @@ public class Publisher {
 
     public List<Book> getBooks() {
         return books;
+    }
+
+    public City getOrigin() {
+        return origin;
     }
 }

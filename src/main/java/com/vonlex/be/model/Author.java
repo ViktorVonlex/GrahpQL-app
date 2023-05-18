@@ -1,5 +1,7 @@
 package com.vonlex.be.model;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.vonlex.be.view.AuthorViews;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;

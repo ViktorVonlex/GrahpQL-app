@@ -12,6 +12,7 @@ type Publisher {
   name: String!
   location: String
   books: [Book!]!
+  origin: City!
 }
 
 type Book {
@@ -23,12 +24,19 @@ type Book {
   publisher: Publisher
 }
 
+type City {
+  id: ID!
+  name: String!
+  publishers: [Publisher!]!
+}
+
 type Query {
   authors: [Author!]!
   author(id: ID!): Author
   publishers: [Publisher!]!
   publisher(id: ID!): Publisher
   publisherByBookId(id: ID!): Publisher
+  publishersByOriginId(id: ID!): [Publisher]
   books: [Book!]!
   woAuthor: [Book]!
   book(id: ID!): Book

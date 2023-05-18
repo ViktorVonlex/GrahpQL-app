@@ -1,8 +1,10 @@
 package com.vonlex.be.restControllers;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.vonlex.be.DTO.PublisherDTO;
 import com.vonlex.be.model.Publisher;
 import com.vonlex.be.repository.PublisherRepository;
+import com.vonlex.be.view.PublisherViews;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,13 +26,13 @@ public class PublisherController {
         return publisherRepository.findPublisherByBooksId(bookId);
     }
 
-//    @GetMapping("/publisherByCityId/{cityId}")
-//    public List<Publisher> byCityId(@PathVariable Long cityId) {
+    @GetMapping("/publisherByCityId/{cityId}")
+    public List<Publisher> byCityId(@PathVariable Long cityId) {
+        return publisherRepository.findPublishersByOriginId(cityId);
+    }
+
+//    @GetMapping("/publisherDTOByCityId/{cityId}")
+//    public List<PublisherDTO> DTObyCityId(@PathVariable Long cityId) {
 //        return publisherRepository.findPublishersByPublisherOriginId(cityId);
 //    }
-
-    @GetMapping("/publisherDTOByCityId/{cityId}")
-    public List<PublisherDTO> DTObyCityId(@PathVariable Long cityId) {
-        return publisherRepository.findPublishersByPublisherOriginId(cityId);
-    }
 }

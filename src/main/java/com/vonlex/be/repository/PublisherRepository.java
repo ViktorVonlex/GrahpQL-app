@@ -11,8 +11,8 @@ import java.util.List;
 public interface PublisherRepository extends JpaRepository<Publisher, Long> {
 
     Publisher findPublisherByBooksId(Long id);
-    //List<Publisher> findPublishersByPublisherOriginId(Long cityId);
+    List<Publisher> findPublishersByOriginId(Long cityId);
 
-    @Query("SELECT NEW com.vonlex.be.DTO.PublisherDTO(p.id, p.name, p.location) FROM Publisher p WHERE p.publisherOrigin.id = :cityId")
-    List<PublisherDTO> findPublishersByPublisherOriginId(@Param("cityId") Long cityId);
+//    @Query("SELECT NEW com.vonlex.be.DTO.PublisherDTO(p.id, p.name, p.location) FROM Publisher p WHERE p.publisherOrigin.id = :cityId")
+//    List<PublisherDTO> findPublishersByPublisherOriginId(@Param("cityId") Long cityId);
 }

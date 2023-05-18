@@ -31,4 +31,9 @@ public class PublisherGraphQL {
         return publisherRepository.findPublisherByBooksId(id);
     }
 
+    @SchemaMapping(typeName = "Query", field = "publishersByOriginId")
+    public List<Publisher> publishersByOrigin(@Argument Long id) {
+        return publisherRepository.findPublishersByOriginId(id);
+    }
+
 }

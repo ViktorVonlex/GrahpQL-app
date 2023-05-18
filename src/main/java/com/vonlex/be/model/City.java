@@ -15,16 +15,16 @@ public class City {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "publisherOrigin", cascade = CascadeType.ALL)
-    private List<Publisher> publisherList;
+    @OneToMany(mappedBy = "origin", cascade = CascadeType.ALL)
+    private List<Publisher> publishers;
 
     public City() {
     }
 
-    public City(Long id, String name, List<Publisher> publisherList) {
+    public City(Long id, String name, List<Publisher> publishers) {
         this.id = id;
         this.name = name;
-        this.publisherList = publisherList;
+        this.publishers = publishers;
     }
 
     public Long getId() {
@@ -43,11 +43,11 @@ public class City {
         this.name = name;
     }
 
-    public List<Publisher> getPublisherList() {
-        return publisherList;
+    public List<Publisher> getPublishers() {
+        return publishers;
     }
 
-    public void setPublisherList(List<Publisher> publisherList) {
-        this.publisherList = publisherList;
+    public void setPublishers(List<Publisher> publisherList) {
+        this.publishers = publisherList;
     }
 }
