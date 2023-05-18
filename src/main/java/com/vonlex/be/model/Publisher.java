@@ -20,6 +20,10 @@ public class Publisher {
     @OneToMany(mappedBy = "publisher", cascade = CascadeType.ALL)
     private List<Book> books;
 
+    @ManyToOne
+    @JoinColumn(name = "city_id")
+    private City publisherOrigin;
+
     // constructors, getters and setters
 
     // getter and setter methods

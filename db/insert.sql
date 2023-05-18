@@ -2,9 +2,12 @@ INSERT INTO author (first_name, last_name, birth_date, country) VALUES ('Margare
 INSERT INTO author (first_name, last_name, birth_date, country) VALUES ('Neil', 'Gaiman', '1960-11-10', 'England');
 INSERT INTO author (first_name, last_name, birth_date, country) VALUES ('Octavia', 'Butler', '1947-06-22', 'USA');
 
-INSERT INTO publisher (name, location) VALUES ('Penguin Random House', 'New York, NY');
-INSERT INTO publisher (name, location) VALUES ('HarperCollins', 'London, UK');
-INSERT INTO publisher (name, location) VALUES ('Hachette Livre', 'Paris, France');
+INSERT INTO city (name) VALUES ('New York');
+INSERT INTO city (name) VALUES ('London');
+
+INSERT INTO publisher (name, location, city_id) VALUES ('Penguin Random House', 'New York, NY', 1);
+INSERT INTO publisher (name, location, city_id) VALUES ('HarperCollins', 'London, UK', 1);
+INSERT INTO publisher (name, location, city_id) VALUES ('Hachette Livre', 'Paris, France', 2);
 
 INSERT INTO book (title, isbn, year, author_id, publisher_id) VALUES ('The Handmaid''s Tale', '9780385490818', 1985, 1, 1);
 INSERT INTO book (title, isbn, year, author_id, publisher_id) VALUES ('Nejlepsi knizka', '1231244232423', 1985, 1, 2);

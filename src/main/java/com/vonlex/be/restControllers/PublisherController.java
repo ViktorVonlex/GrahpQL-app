@@ -1,5 +1,6 @@
 package com.vonlex.be.restControllers;
 
+import com.vonlex.be.DTO.PublisherDTO;
 import com.vonlex.be.model.Publisher;
 import com.vonlex.be.repository.PublisherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +22,15 @@ public class PublisherController {
     @GetMapping("/publisherByBookId/{bookId}")
     public Publisher byAuthorId(@PathVariable Long bookId) {
         return publisherRepository.findPublisherByBooksId(bookId);
+    }
+
+//    @GetMapping("/publisherByCityId/{cityId}")
+//    public List<Publisher> byCityId(@PathVariable Long cityId) {
+//        return publisherRepository.findPublishersByPublisherOriginId(cityId);
+//    }
+
+    @GetMapping("/publisherDTOByCityId/{cityId}")
+    public List<PublisherDTO> DTObyCityId(@PathVariable Long cityId) {
+        return publisherRepository.findPublishersByPublisherOriginId(cityId);
     }
 }
