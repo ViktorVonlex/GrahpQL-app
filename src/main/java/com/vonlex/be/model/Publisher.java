@@ -1,8 +1,6 @@
 package com.vonlex.be.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonView;
-import com.vonlex.be.view.PublisherViews;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -35,6 +33,8 @@ public class Publisher {
     public Publisher() {
 
     }
+
+
 
     public Long getId() {
         return id;

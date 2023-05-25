@@ -1,5 +1,6 @@
 package com.vonlex.be.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 
@@ -22,10 +23,12 @@ public class Book {
 
     @ManyToOne
     @JoinColumn(name = "author_id", nullable = false)
+    @JsonIgnore
     private Author author;
 
     @ManyToOne
     @JoinColumn(name = "publisher_id")
+    @JsonIgnore
     private Publisher publisher;
 
     // Constructors, getters, and setters
@@ -46,6 +49,10 @@ public class Book {
         this.isbn = isbn;
         this.year = year;
         this.author = author;
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
     }
 
     public Long getId() {
